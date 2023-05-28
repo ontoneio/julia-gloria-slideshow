@@ -1,0 +1,41 @@
+---
+import Component from './Component.astro'
+
+export interface Props {
+	from: string;
+    layout: String
+}
+
+
+const { from, layout } = Astro.props as Props;
+
+---
+<section class="step slide">
+    <header>
+        <h2> From: { from } </h2>
+    </header>
+    <section id="content">
+        <Component name={layout} />
+    </section>
+    <footer>
+
+    </footer>
+</section>
+
+<style>
+    .slide {
+        display: block;
+        width: 1900px;
+        height: 1000px;
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, .3);
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+        color: rgb(102, 102, 102);
+        text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-size: 30px;
+        line-height: 36px;
+        letter-spacing: -1px;
+    }
+</style>

@@ -4,9 +4,10 @@ import anime from 'animejs/lib/anime.es.js';
 
 export interface Props {
 	title: string;
+  bgColor: string
 }
 
-const { title } = Astro.props as Props;
+const { title, bgColor } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -23,29 +24,29 @@ const { title } = Astro.props as Props;
     <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
   </div> -->
 	<slot />
+  <script is:global src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
   <script is:global src="https://cdn.jsdelivr.net/gh/impress/impress.js@2.0.0/js/impress.js"></script>
   <script is:global>impress().init()</script>
-  <!-- <script is:global>
-    anime({
-      targets: '.step',
-      translateX: 250,
-      rotate: '1turn',
-      backgroundColor: '#FFF',
-      duration: 800
-    });
-  </script> -->
-  <script is:global src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+  <script>
+    import Alpine from 'alpinejs';
+  
+    // Optional: Extend Alpine.js
+    // Alpine.directive('foo', ...)
+  
+    window.Alpine = Alpine;
+    Alpine.start();
+  </script>
 
 </body>
 </html>
 
-<style>
+<style define:vars={{bgColor}}>
   :root {
     --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
 		--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem); 
     --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
     --color-text: hsl(12, 5%, 4%);
-    --color-bg: hsl(10, 21%, 95%);
+    --color-bg: var(--bgColor);
   }
   html {
     font-family: system-ui, sans-serif;

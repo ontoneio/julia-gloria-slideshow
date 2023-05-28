@@ -19,7 +19,10 @@
     "unocss": "^0.52.4"
   },
   "dependencies": {
+    "@astrojs/alpinejs": "^0.2.2",
     "@astrojs/netlify": "^2.2.3",
+    "@types/alpinejs": "^3.7.1",
+    "alpinejs": "^3.12.1",
     "animejs": "^3.2.1",
     "cypress": "^10.0.3"
   }
